@@ -1,24 +1,47 @@
 package it.polito.tdp.Lab01.model;
 
 import java.util.List;
+import java.util.*;
 
 public class Parole {
 		
+	private List<String> parole;
+	
+	
 	public Parole() {
-		//TODO
+
+		this.parole = new ArrayList<String>();
+		
 	}
 	
 	public void addParola(String p) {
-		//TODO
+		this.parole.add(p);
+		
+		
 	}
 	
 	public List<String> getElenco() {
 		//TODO
-		return null;
+		
+		List<String> lista = new ArrayList<String>(this.parole);
+		
+		Collections.sort(lista, new StringComparator());
+		
+		return lista;
 	}
 	
 	public void reset() {
-		// TODO
+		this.parole.clear();
+	}
+	
+	
+	public void cancellaParola(String p) {
+		
+		if(parole.contains(p)) {
+			this.parole.remove(p);
+		}
+		
 	}
 
+	
 }
