@@ -42,12 +42,11 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
 
-    	long tInizio = System.nanoTime();
+    	long start = System.nanoTime();
     	
-    	String parola = txtParola.getText();
-    	elenco.addParola(parola);
+    	elenco.addParola(txtParola.getText());
     	
-    	
+    	long stop = System.nanoTime();
     	
     	// Stampa parole in ordine alfabetico
     	
@@ -59,34 +58,30 @@ public class FXMLController {
     		
     	}
     	
-    	txtCom.setText(""+(System.nanoTime()-tInizio)/1000000.0 + " millisecondi");
-    	
-    	
+    	txtCom.setText("[Inserisci]: "+(stop-start)/1e9 + " seconds");
     }
 
     @FXML
     void doReset(ActionEvent event) {
-
-    	long tInizio = System.nanoTime();
     	
     	elenco.reset();
     	txtParola.clear();
     	txtResult.clear();
     	
-    	
-    	txtCom.setText(""+(System.nanoTime()-tInizio)/1000000.0 + " millisecondi");
-    	
+    	txtCom.clear();
     }
     
     
     @FXML
     void doCancella(ActionEvent event) {
 
-    	long tInizio = System.nanoTime();
+    	String selected = txtResult.getSelectedText();
     	
-    	String parola = txtParola.getText();
+    	long start = System.nanoTime();
     	
-    	elenco.cancellaParola(parola);
+    	elenco.cancellaParola(selected);
+    	
+    	long stop = System.nanoTime();
     	
     	// Stampa parole in ordine alfabetico
     	
@@ -98,7 +93,7 @@ public class FXMLController {
     		
     	}
     	
-    	txtCom.setText(""+(System.nanoTime()-tInizio)/1000000.0 + " millisecondi");
+    	txtCom.setText("[Cancella]: "+(stop-start)/1e9 + " seconds");
     }
     
 

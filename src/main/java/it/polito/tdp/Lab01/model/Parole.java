@@ -12,6 +12,8 @@ public class Parole {
 
 		this.parole = new ArrayList<String>();
 		
+		//this.parole = new LinkedList<String>();
+		
 	}
 	
 	public void addParola(String p) {
@@ -21,11 +23,12 @@ public class Parole {
 	}
 	
 	public List<String> getElenco() {
-		//TODO
 		
 		List<String> lista = new ArrayList<String>(this.parole);
 		
-		Collections.sort(lista, new StringComparator());
+		//Collections.sort(lista, new StringComparator());
+		
+		Collections.sort(lista);
 		
 		return lista;
 	}
